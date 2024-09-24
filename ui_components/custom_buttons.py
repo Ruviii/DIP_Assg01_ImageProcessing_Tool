@@ -3,17 +3,12 @@ import customtkinter as ctk
 # Define the color palette
 black = 'BLACK'
 white = 'WHITE'
-lYellow = '#fff9e2'
-yellow = '#ffd500'
-dYellow = '#F9A825'
+yellow = '#FFEB3B'
+dYellow = '#FFC100'
 pink = '#e91e63'
 
-gray = '#676767'
 dGray = '#2f2f2f'
 lGray = '#989898'
-color1 = '#020f12'
-color2 = '#0387E7'
-color3 = '#05C3FF'
 
 # Custom Button Design
 class CustomButton1(ctk.CTkButton):
@@ -25,7 +20,7 @@ class CustomButton1(ctk.CTkButton):
             corner_radius=20,
             width=150,
             height=40,
-            font=('Arial', 16, 'bold'),
+            font=('Arial', 17, 'bold'),
             border_width=0
         )
 
@@ -46,7 +41,7 @@ class CustomButton2(ctk.CTkButton):
             hover_color=yellow,
             corner_radius=20,
             width=150,
-            height=40,
+            height=35,
             font=('Arial', 15, 'bold')
         ) 
 

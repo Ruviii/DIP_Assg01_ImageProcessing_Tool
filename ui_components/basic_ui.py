@@ -1,5 +1,6 @@
 import customtkinter as ctk
-from .custom_buttons import CustomButton2, dGray, lGray,dYellow,pink,white,yellow, lYellow
+import tkinter as tk
+from .custom_buttons import CustomButton2, dGray, lGray,dYellow,pink,white,yellow
 
 class BasicUI:
     def __init__(self, sidebar, basic_processor):
@@ -13,7 +14,7 @@ class BasicUI:
 
         # Create a scrollable frame
         scrollable_frame = ctk.CTkScrollableFrame(tab1, width=200, height=200, fg_color=dGray)
-        scrollable_frame.pack(padx=(20,5), fill="both", expand=True)
+        scrollable_frame.pack(padx=(5,0), fill="both", expand=True)
 
         # Customize the scrollbar color
         scrollable_frame._scrollbar.configure(
@@ -22,7 +23,7 @@ class BasicUI:
         )
 
         rotate_btn = CustomButton2(scrollable_frame, text="Rotate", command=self.basic_processor.rotate_image)
-        rotate_btn.pack(pady=10)
+        rotate_btn.pack(pady=(20,10))
 
         crop_btn = CustomButton2(scrollable_frame, text="Crop", command=self.basic_processor.crop_image)
         crop_btn.pack(pady=10)
@@ -33,12 +34,15 @@ class BasicUI:
         brightness_btn = CustomButton2(scrollable_frame, text="Brightness", command=self.basic_processor.change_brightness)
         brightness_btn.pack(pady=10)
 
-        btn_frame2 = ctk.CTkFrame(scrollable_frame, fg_color="transparent", corner_radius=20, border_width=2, border_color=lYellow)
+        btn_frame2 = ctk.CTkFrame(scrollable_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=pink)
         btn_frame2.pack(side=ctk.TOP,padx=20,pady=30)
+
+        slider_label = tk.Label(btn_frame2, text="Adjust Line Thicknes", bg=dGray, fg=white, font=('Arial', 11, 'bold'))
+        slider_label.pack(padx=10, pady=(25, 0))
 
         thickness_slider = ctk.CTkSlider(btn_frame2, from_=1, to=100, orientation='horizontal', width=200,fg_color=white, progress_color=pink, button_color=dYellow,button_hover_color= yellow, command=self.basic_processor.update_thickness)
         thickness_slider.set(self.basic_processor.line_thickness)
-        thickness_slider.pack(pady=20, padx=20)
+        thickness_slider.pack(pady=10, padx=20)
 
         draw_line_btn = CustomButton2(btn_frame2, text="Draw Line", command=self.basic_processor.drawing_line)
         draw_line_btn.pack(pady=10, padx=20)
@@ -53,6 +57,6 @@ class BasicUI:
         draw_triangle_btn.pack(pady=10, padx=20)
 
         draw_square_btn = CustomButton2(btn_frame2, text="Draw Square", command=self.basic_processor.drawing_square)
-        draw_square_btn.pack(pady=(10, 20), padx=20)
+        draw_square_btn.pack(pady=(10, 25), padx=20)
 
         
