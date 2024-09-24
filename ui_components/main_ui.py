@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from .custom_buttons import CustomButton1,CustomButton3, gray, white, color2, color3, black
+from .custom_buttons import CustomButton1,CustomButton3, gray, white, pink, color3, black
 
 class MainUI:
     def __init__(self, root, file_handler):
@@ -18,8 +18,8 @@ class MainUI:
         style.theme_use('default')
 
         style.configure('TNotebook', background=gray, borderwidth=0)
-        style.configure('TNotebook.Tab', background=color2, foreground=white, font=('Arial', 11, 'bold'), anchor='center', justify='center', padding=[4, 5], bd=0, width=10)
-        style.map('TNotebook.Tab', background=[('selected', color3)])
+        style.configure('TNotebook.Tab', background=pink, foreground=white, font=('Arial', 11, 'bold'), anchor='center', justify='center', padding=[4, 5], bd=0, width=10)
+        style.map('TNotebook.Tab', background=[('selected', black)])
 
         # Notebook for the sidebar
         self.sidebar = ttk.Notebook(self.root)

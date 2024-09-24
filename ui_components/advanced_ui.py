@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from .custom_buttons import CustomButton2, dGray
+from .custom_buttons import CustomButton2, dGray, pink, white, black, gray
 
 class AdvancedUI:
     def __init__(self, sidebar, filter, intensity_manipulation, image_segmentation):
@@ -17,6 +17,17 @@ class AdvancedUI:
         # Create a nested notebook inside tab2
         nested_notebook = ttk.Notebook(tab2)
         nested_notebook.pack(expand=1, fill='both')
+
+        # Style for the nested notebook
+        style = ttk.Style()
+        style.theme_use('default')
+
+        style.configure('Nested.TNotebook', background=dGray, borderwidth=0, padding=[0, 15])
+        style.configure('Nested.TNotebook.Tab', background=gray, foreground=white, font=('Arial', 11, 'bold'), anchor='center', justify='center', padding=[4, 5], bd=0, width=10)
+        style.map('Nested.TNotebook.Tab', background=[('selected', white)], foreground=[('selected', black)])
+
+        # Apply the custom style to the nested notebook
+        nested_notebook.configure(style='Nested.TNotebook')
 
         # Create tabs inside the nested notebook
         filters_tab = tk.Frame(nested_notebook, bg=dGray)

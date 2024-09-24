@@ -4,8 +4,8 @@ import customtkinter as ctk
 black = 'BLACK'
 white = 'WHITE'
 lYellow = '#fff9e2'
-yellow = '#ffd500'
-dYellow = '#F9A825'
+yellow = '#FFEB3B'
+dYellow = '#FFC100'
 pink = '#e91e63'
 
 gray = '#676767'
@@ -25,7 +25,7 @@ class CustomButton1(ctk.CTkButton):
             corner_radius=20,
             width=150,
             height=40,
-            font=('Arial', 16, 'bold'),
+            font=('Arial', 17, 'bold'),
             border_width=0
         )
 
