@@ -57,31 +57,8 @@ class AdvancedUI:
         linear_filter_btn = CustomButton2(filters_tab, text="Apply Linear Filter", command=self.filter.filter_linear)
         linear_filter_btn.pack(pady=10)
 
-        # Undo buttons
-        undo_btn = CustomButton2(filters_tab, text="Undo", command=self.filter.undo_action)
-        undo_btn.pack(pady=10)
-
-        # Redo button
-        redo_btn = CustomButton2(filters_tab, text="Redo", command=self.filter.redo_action)
-        redo_btn.pack(pady=10)
-
         # -----Add buttons to the Intensity Manipulation tab------
 
-        # Undo buttons
-        undo_btn = CustomButton2(intensity_tab, text="Undo", command=self.intensity_manipulation.undo_action)
-        undo_btn.pack(pady=10)
-
-        # Redo button
-        redo_btn = CustomButton2(intensity_tab, text="Redo", command=self.intensity_manipulation.redo_action)
-        redo_btn.pack(pady=10)
 
 
         # -----Add buttons to the Image Segmentation tab------
-
-         # Undo buttons
-        undo_btn = CustomButton2(segmentation_tab, text="Undo", command=self.image_segmentation.undo_action)
-        undo_btn.pack(pady=10)
-
-        # Redo button
-        redo_btn = CustomButton2(segmentation_tab, text="Redo", command=self.image_segmentation.redo_action)
-        redo_btn.pack(pady=10)
