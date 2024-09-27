@@ -52,6 +52,7 @@ class BasicProcessor:
             self.file_handler.processed_img = cv2.cvtColor(np.array(img_pil), cv2.COLOR_RGB2BGR)
             self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
 
+    # Functions to draw shapes and Lines on the image
     def update_thickness(self, value):
         self.line_thickness = int(value)
 
