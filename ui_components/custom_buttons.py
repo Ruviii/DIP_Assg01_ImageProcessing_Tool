@@ -27,8 +27,8 @@ lGray = '#989898'
 
 # Custom Button Design
 class CustomButton1(ctk.CTkButton):             # File handling buttons
-    def __init__(self, parent, text, command):
-        super().__init__(parent, text=text, command=command)
+    def __init__(self, parent, text, command, image=None):
+        super().__init__(parent, text=text, command=command, image=image, compound="left")
         self.configure(
             fg_color=color_3,
             text_color=white,
@@ -48,8 +48,8 @@ class CustomButton1(ctk.CTkButton):             # File handling buttons
         self.configure(fg_color=color_3, border_width=0, text_color=white)
 
 class CustomButton2(ctk.CTkButton):            # Undo, Redo buttons
-    def __init__(self, parent, text, command):
-        super().__init__(parent, text=text, command=command)
+    def __init__(self, parent, text, command, image=None):
+        super().__init__(parent, text=text, command=command, image=image, compound="left")
         self.configure(
             fg_color=color_7,
             text_color=white,
