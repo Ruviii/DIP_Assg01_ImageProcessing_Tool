@@ -1,5 +1,5 @@
 import tkinter as tk
-from .custom_buttons import CustomButton2, dGray
+from .custom_buttons import CustomButton3,CustomButton4,CustomButton5, color_2
 
 class DeepLearningUI:
     def __init__(self, sidebar, style_transfer, image_enhancement, image_generator, ai_image_segmentation):
@@ -11,7 +11,7 @@ class DeepLearningUI:
         self.setup_deep_learning_ui()
 
     def setup_deep_learning_ui(self):
-        tab3 = tk.Frame(self.sidebar, bg=dGray, bd=0)
+        tab3 = tk.Frame(self.sidebar, bg=color_2, bd=0)
         self.sidebar.add(tab3, text="AI Tools")
 
     #----------buttons for ai_image_segmentation----------#
