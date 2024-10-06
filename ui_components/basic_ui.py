@@ -68,3 +68,5 @@ class BasicUI:
         sample_btn = CustomButton4(btn_frame4, text="Test Button", command=self.basic_processor.drawing_square)
         sample_btn.pack(pady=(10, 25), padx=20)
         
+        sample_btn = CustomButton4(btn_frame4, text="Test Button", command=self.basic_processor.drawing_square)
+        sample_btn.pack(pady=(10, 25), padx=20)
