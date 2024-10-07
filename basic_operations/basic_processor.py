@@ -290,8 +290,7 @@ class BasicProcessor:
             ok_button.grid(row=5, column=1, padx=10, pady=10)
 
             dialog_box.mainloop()
-
-
+ 
     def undo_action(self):
         self.file_handler.undo_action()
 
