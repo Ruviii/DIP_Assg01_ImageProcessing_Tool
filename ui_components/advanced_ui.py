@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import customtkinter as ctk
-from .custom_buttons import CustomButton5, CustomButton4,CustomButton3,color_2, color_3, white, lGray, black
+from .custom_buttons import CustomButton5, CustomButton4,CustomButton3,color_2, color_3, white, lGray, black, color_5, color_7
 
 class AdvancedUI:
     def __init__(self, sidebar, filter, intensity_manipulation, image_segmentation):
@@ -25,13 +25,13 @@ class AdvancedUI:
         )
 
         # Create frames for filters, intensity manipulation, and image segmentation 
-        filters_frame = ctk.CTkFrame(s_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=color_3)
+        filters_frame = ctk.CTkFrame(s_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=color_5)
         filters_frame.grid(row=1, column=0, padx=10, pady=10)
 
         intensity_manipulation_frame = ctk.CTkFrame(s_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=color_3)
         intensity_manipulation_frame.grid(row=3, column=0, padx=10, pady=10)
 
-        image_segmentation_frame = ctk.CTkFrame(s_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=color_3)
+        image_segmentation_frame = ctk.CTkFrame(s_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=color_7)
         image_segmentation_frame.grid(row=5, column=0, padx=10, pady=10)
 
         # Add titles above each frame
