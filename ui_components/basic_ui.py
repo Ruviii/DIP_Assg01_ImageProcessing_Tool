@@ -80,7 +80,7 @@ class BasicUI:
         hsv_btn = CustomButton4(btn_frame4, text="Convert to HSV", command=self.basic_processor.convert_to_hsv)
         hsv_btn.pack(pady=(10, 25), padx=20)
 
-        add_text_btn = CustomButton4(btn_frame4, text="Add Text", command=lambda: self.basic_processor.add_text_to_image("Sample Text", 50, 50))
+        add_text_btn = CustomButton4(btn_frame4, text="Add Text", command=self.basic_processor.add_text_to_image)
         add_text_btn.pack(pady=(10, 25), padx=20)
 
 
