@@ -167,6 +167,53 @@ class BasicProcessor:
         self.file_handler.img_canvas2.bind("<B1-Motion>", self.draw_square)
         self.file_handler.img_canvas2.bind("<ButtonRelease-1>", self.draw_square)
 
+    # Functions to Dulmini
+
+    def convert_to_grayscale(self):
+        if self.file_handler.processed_img is not None:
+            self.file_handler.save_undo_state()
+            self.file_handler.processed_img = cv2.cvtColor(self.file_handler.processed_img, cv2.COLOR_BGR2GRAY)
+            self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
+
+    def convert_to_black_and_white(self):
+        if self.file_handler.processed_img is not None:
+            self.file_handler.save_undo_state()
+            gray_img = cv2.cvtColor(self.file_handler.processed_img, cv2.COLOR_BGR2GRAY)
+            _, bw_img = cv2.threshold(gray_img, 128, 255, cv2.THRESH_BINARY)
+            self.file_handler.processed_img = bw_img
+            self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
+
+    def convert_to_rgb(self):
+        if self.file_handler.processed_img is not None:
+            self.file_handler.save_undo_state()
+            self.file_handler.processed_img = cv2.cvtColor(self.file_handler.processed_img, cv2.COLOR_BGR2RGB)
+            self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
+
+    def convert_to_cmyk(self):
+        if self.file_handler.processed_img is not None:
+            self.file_handler.save_undo_state()
+            # Convert OpenCV (numpy) image to Pillow
+            img_pil = Image.fromarray(cv2.cvtColor(self.file_handler.processed_img, cv2.COLOR_BGR2RGB))
+            cmyk_img = img_pil.convert('CMYK')
+            # Convert back to RGB for display in OpenCV
+            rgb_img = cmyk_img.convert('RGB')
+            self.file_handler.processed_img = cv2.cvtColor(np.array(rgb_img), cv2.COLOR_RGB2BGR)
+            self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
+
+    def convert_to_hsv(self):
+        if self.file_handler.processed_img is not None:
+            self.file_handler.save_undo_state()
+            self.file_handler.processed_img = cv2.cvtColor(self.file_handler.processed_img, cv2.COLOR_BGR2HSV)
+            self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
+
+    def add_text_to_image(self, text="Sample Text", x=50, y=50):
+        if self.file_handler.processed_img is not None:
+            self.file_handler.save_undo_state()
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            cv2.putText(self.file_handler.processed_img, text, (x, y), font, 1, (0, 255, 0), 2, cv2.LINE_AA)
+            self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
+
+
     def undo_action(self):
         self.file_handler.undo_action()
 
