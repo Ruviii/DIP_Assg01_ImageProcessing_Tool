@@ -16,7 +16,7 @@ class AdvancedUI:
         self.sidebar.add(tab2, text="Advanced")
 
         # Create a scrollable frame
-        s_frame = ctk.CTkScrollableFrame(tab2, width=200, height=400, fg_color=color_2)#increase height 200 to 400
+        s_frame = ctk.CTkScrollableFrame(tab2, width=200, height=400, fg_color=color_2)
         s_frame.pack(padx=(5,0), fill="both", expand=True)
 
         s_frame._scrollbar.configure(
@@ -48,88 +48,88 @@ class AdvancedUI:
 
         # Button to apply Sharpening filter
         sharpen_btn = CustomButton4(filters_frame, text="Sharpen", command=self.filter.sharpen_image)
-        sharpen_btn.pack(pady=5, padx=10)
+        sharpen_btn.pack(pady=(25,10), padx=10)
 
         # Button to apply Smoothing filter
         smooth_btn = CustomButton4(filters_frame, text="Smooth", command=self.filter.smooth_image)
-        smooth_btn.pack(pady=5, padx=10)
+        smooth_btn.pack(pady=10, padx=10)
 
         # Button to apply Edge Detection filter
         edge_detection_btn = CustomButton4(filters_frame, text="Edge Detection", command=self.filter.edge_detection)
-        edge_detection_btn.pack(pady=5, padx=10)
+        edge_detection_btn.pack(pady=10, padx=10)
 
         # Button to apply Embossing filter
         embossing_btn = CustomButton4(filters_frame, text="Emboss", command=self.filter.emboss_image)
-        embossing_btn.pack(pady=5, padx=10)
+        embossing_btn.pack(pady=10, padx=10)
 
         # Button to apply Gaussian Blur filter
         gaussian_blur_btn = CustomButton4(filters_frame, text="Gaussian Blur", command=self.filter.gaussian_blur)
-        gaussian_blur_btn.pack(pady=5, padx=10)
+        gaussian_blur_btn.pack(pady=10, padx=10)
 
         # Button to apply CLAHE (Contrast Limited Adaptive Histogram Equalization)
         bilateral_filter_btn = CustomButton4(filters_frame, text="Bilateral", command=self.filter.bilateral_filter)
-        bilateral_filter_btn.pack(pady=(5,20), padx=10)
+        bilateral_filter_btn.pack(pady=(10,25), padx=10)
 
         # -----Add buttons to the Intensity Manipulation tab------
 
         # Button to apply negative transformation
-        negative_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Negative Transformation", command=self.intensity_manipulation.negative_transformation)
-        negative_transformation_btn.pack(pady=(20,5), padx=10)
+        negative_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Negative", command=self.intensity_manipulation.negative_transformation)
+        negative_transformation_btn.pack(pady=(25,10), padx=10)
 
         # Button to apply logarithmic transformation
-        log_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Log Transformation", command=self.intensity_manipulation.log_transformation)
-        log_transformation_btn.pack(pady=5, padx=10)
+        log_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Brighten", command=self.intensity_manipulation.log_transformation)
+        log_transformation_btn.pack(pady=10, padx=10)
 
         # Button to apply power-law (gamma) transformation
-        power_law_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Power-Law Transformation", command=self.intensity_manipulation.power_law_transformation)
-        power_law_transformation_btn.pack(pady=5, padx=10)
+        power_law_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Adjust Gamma", command=self.intensity_manipulation.power_law_transformation)
+        power_law_transformation_btn.pack(pady=10, padx=10)
 
         # Button to apply contrast stretching
-        contrast_stretching_btn = CustomButton3(intensity_manipulation_frame, text="Contrast Stretching", command=self.intensity_manipulation.contrast_stretching)
-        contrast_stretching_btn.pack(pady=5, padx=10)
+        contrast_stretching_btn = CustomButton3(intensity_manipulation_frame, text="Enhance Contrast", command=self.intensity_manipulation.contrast_stretching)
+        contrast_stretching_btn.pack(pady=10, padx=10)
 
         # Button to apply intensity level slicing
-        intensity_level_slicing_btn = CustomButton3(intensity_manipulation_frame, text="Intensity Level Slicing", command=self.intensity_manipulation.intensity_level_slicing)
-        intensity_level_slicing_btn.pack(pady=5, padx=10)
+        intensity_level_slicing_btn = CustomButton3(intensity_manipulation_frame, text="Slice Levels", command=self.intensity_manipulation.intensity_level_slicing)
+        intensity_level_slicing_btn.pack(pady=10, padx=10)
 
         # Button to apply global histogram equalization
-        apply_histogram_equalization_btn = CustomButton3(intensity_manipulation_frame, text="Apply Histogram Equalization", command=self.intensity_manipulation.apply_histogram_equalization)
-        apply_histogram_equalization_btn.pack(pady=5, padx=10)
+        apply_histogram_equalization_btn = CustomButton3(intensity_manipulation_frame, text="Equalize Histogram", command=self.intensity_manipulation.apply_histogram_equalization)
+        apply_histogram_equalization_btn.pack(pady=10, padx=10)
 
         # Button to apply local histogram equalization (CLAHE)
-        apply_local_histogram_equalization_btn = CustomButton3(intensity_manipulation_frame, text="Apply Local Histogram Equalization", command=self.intensity_manipulation.apply_local_histogram_equalization)
-        apply_local_histogram_equalization_btn.pack(pady=5, padx=10)
+        apply_local_histogram_equalization_btn = CustomButton3(intensity_manipulation_frame, text="Local Equalization", command=self.intensity_manipulation.apply_local_histogram_equalization)
+        apply_local_histogram_equalization_btn.pack(pady=10, padx=10)
 
         # Button to apply tonal transformation
-        tonal_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Tonal Transformation", command=self.intensity_manipulation.tonal_transformation)
-        tonal_transformation_btn.pack(pady=5, padx=10)
+        tonal_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Adjust Tones", command=self.intensity_manipulation.tonal_transformation)
+        tonal_transformation_btn.pack(pady=10, padx=10)
 
         # Button to apply color balancing
-        color_balancing_btn = CustomButton3(intensity_manipulation_frame, text="Color Balancing", command=self.intensity_manipulation.color_balancing)
-        color_balancing_btn.pack(pady=5, padx=10)
+        color_balancing_btn = CustomButton3(intensity_manipulation_frame, text="Balance Colors", command=self.intensity_manipulation.color_balancing)
+        color_balancing_btn.pack(pady=(10,25), padx=10)
 
 
         # -----Add buttons to the Image Segmentation tab------
 
         # Button for Thresholding Segmentation
         thresholding_btn = CustomButton5(image_segmentation_frame, text="Apply Thresholding", command=self.image_segmentation.thresholding)
-        thresholding_btn.pack(pady=(20,5), padx=10)
+        thresholding_btn.pack(pady=(25,10), padx=10)
 
         # Button for Edge Detection
         edge_detection_btn = CustomButton5(image_segmentation_frame, text="Edge Detection", command=self.image_segmentation.edge_detection)
-        edge_detection_btn.pack(pady=5, padx=10)
+        edge_detection_btn.pack(pady=10, padx=10)
 
         # Button for Watershed Segmentation
         watershed_btn = CustomButton5(image_segmentation_frame, text="Apply Watershed", command=self.image_segmentation.watershed)
-        watershed_btn.pack(pady=5, padx=10)
+        watershed_btn.pack(pady=10, padx=10)
 
         # Button for GrabCut Segmentation
         grabcut_btn = CustomButton5(image_segmentation_frame, text="Apply GrabCut", command=self.image_segmentation.grabcut)
-        grabcut_btn.pack(pady=5, padx=10)
+        grabcut_btn.pack(pady=10, padx=10)
 
         # Button for Region Growing Segmentation
         region_growing_btn = CustomButton5(image_segmentation_frame, text="Region Growing", command=self.image_segmentation.region_growing)
-        region_growing_btn.pack(pady=(5,20), padx=10)
+        region_growing_btn.pack(pady=(10,25), padx=10)
 
 
         
