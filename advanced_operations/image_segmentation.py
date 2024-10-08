@@ -76,7 +76,7 @@ class ImageSegmentation:
             self.file_handler.processed_img = self.file_handler.processed_img * mask2[:, :, np.newaxis]
 
             self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
-
+ # Function to apply Region Growing segmentation
     # Function to apply Region Growing segmentation
     def region_growing(self):
         if self.file_handler.processed_img is not None:
