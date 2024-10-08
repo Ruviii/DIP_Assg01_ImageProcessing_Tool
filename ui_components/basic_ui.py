@@ -66,19 +66,19 @@ class BasicUI:
         btn_frame4.pack(side=ctk.TOP,padx=20,pady=15)
 
         grayscale_btn = CustomButton4(btn_frame4, text="Grayscale", command=self.basic_processor.convert_to_grayscale)
-        grayscale_btn.pack(pady=(10, 25), padx=20)
+        grayscale_btn.pack(pady=(25, 10), padx=20)
 
         bw_btn = CustomButton4(btn_frame4, text="Black & White", command=self.basic_processor.convert_to_black_and_white)
-        bw_btn.pack(pady=(10, 25), padx=20)
+        bw_btn.pack(pady=10, padx=20)
 
         rgb_btn = CustomButton4(btn_frame4, text="Convert to RGB", command=self.basic_processor.convert_to_rgb)
-        rgb_btn.pack(pady=(10, 25), padx=20)
+        rgb_btn.pack(pady=10, padx=20)
 
         cmyk_btn = CustomButton4(btn_frame4, text="Convert to CMYK", command=self.basic_processor.convert_to_cmyk)
-        cmyk_btn.pack(pady=(10, 25), padx=20)
+        cmyk_btn.pack(pady=10, padx=20)
 
         hsv_btn = CustomButton4(btn_frame4, text="Convert to HSV", command=self.basic_processor.convert_to_hsv)
-        hsv_btn.pack(pady=(10, 25), padx=20)
+        hsv_btn.pack(pady=10, padx=20)
 
         add_text_btn = CustomButton4(btn_frame4, text="Add Text", command=self.basic_processor.add_text_to_image)
         add_text_btn.pack(pady=(10, 25), padx=20)
