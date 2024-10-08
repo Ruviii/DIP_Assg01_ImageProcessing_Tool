@@ -45,15 +45,14 @@ class Filters:
             self.file_handler.processed_img = blurred_img
             self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
 
-    def apply_clahe(self):
+    def bilateral_filter(self):
         if self.file_handler.processed_img is not None:
             self.file_handler.save_undo_state()
-            # Convert to grayscale if it's not already
-            gray_img = cv2.cvtColor(self.file_handler.processed_img, cv2.COLOR_BGR2GRAY)
-            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-            clache_img = clahe.apply(gray_img)
-            self.file_handler.processed_img = clache_img
+            # Applying Bilateral Filter
+            bilateral_img = cv2.bilateralFilter(self.file_handler.processed_img, d=9, sigmaColor=75, sigmaSpace=75)
+            self.file_handler.processed_img = bilateral_img
             self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
+
 
 
 

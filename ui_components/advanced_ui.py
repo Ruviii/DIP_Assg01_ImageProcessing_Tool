@@ -67,11 +67,14 @@ class AdvancedUI:
         gaussian_blur_btn.pack(pady=5, padx=10)
 
         # Button to apply CLAHE (Contrast Limited Adaptive Histogram Equalization)
-        clahe_btn = CustomButton4(filters_frame, text="Apply CLAHE", command=self.filter.apply_clahe)
-        clahe_btn.pack(pady=(5,20), padx=10)
+        bilateral_filter_btn = CustomButton4(filters_frame, text="Bilateral", command=self.filter.bilateral_filter)
+        bilateral_filter_btn.pack(pady=(5,20), padx=10)
 
         # -----Add buttons to the Intensity Manipulation tab------
 
 
 
         # -----Add buttons to the Image Segmentation tab------
+
+        
+        
