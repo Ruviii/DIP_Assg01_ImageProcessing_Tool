@@ -39,9 +39,12 @@ class BasicUI:
         # Buttons to draw shapes and lines on the image
         btn_frame2 = ctk.CTkFrame(scrollable_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=color_7)
         btn_frame2.pack(side=ctk.TOP,padx=20,pady=15)
+        
+        color_button = CustomButton3(btn_frame2, text="Choose Color", command=self.basic_processor.choose_color)
+        color_button.pack(padx=10, pady=(25, 0))
 
         slider_label = tk.Label(btn_frame2, text="Adjust Line Thicknes", bg=color_2, fg=black, font=('Arial', 11, 'bold'))
-        slider_label.pack(padx=10, pady=(25, 0))
+        slider_label.pack(pady=10, padx=20)
 
         thickness_slider = ctk.CTkSlider(btn_frame2, from_=1, to=100, orientation='horizontal', width=200,fg_color=color_12, progress_color=color_3, button_color=color_7,button_hover_color= color_9, command=self.basic_processor.update_thickness)
         thickness_slider.set(self.basic_processor.line_thickness)
@@ -80,7 +83,7 @@ class BasicUI:
         hsv_btn = CustomButton4(btn_frame4, text="Convert to HSV", command=self.basic_processor.convert_to_hsv)
         hsv_btn.pack(pady=10, padx=20)
 
-        add_text_btn = CustomButton4(btn_frame4, text="Add Text", command=lambda: self.basic_processor.add_text_to_image("Sample Text", 50, 50))
+        add_text_btn = CustomButton4(btn_frame4, text="Add Text", command=self.basic_processor.add_text_to_image)
         add_text_btn.pack(pady=(10, 25), padx=20)
 
 
