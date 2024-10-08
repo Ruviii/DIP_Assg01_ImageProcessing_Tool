@@ -72,7 +72,41 @@ class AdvancedUI:
 
         # -----Add buttons to the Intensity Manipulation tab------
 
+        # Button to apply negative transformation
+        negative_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Negative Transformation", command=self.intensity_manipulation.negative_transformation)
+        negative_transformation_btn.pack(pady=(20,5), padx=10)
 
+        # Button to apply logarithmic transformation
+        log_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Log Transformation", command=self.intensity_manipulation.log_transformation)
+        log_transformation_btn.pack(pady=5, padx=10)
+
+        # Button to apply power-law (gamma) transformation
+        power_law_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Power-Law Transformation", command=self.intensity_manipulation.power_law_transformation)
+        power_law_transformation_btn.pack(pady=5, padx=10)
+
+        # Button to apply contrast stretching
+        contrast_stretching_btn = CustomButton3(intensity_manipulation_frame, text="Contrast Stretching", command=self.intensity_manipulation.contrast_stretching)
+        contrast_stretching_btn.pack(pady=5, padx=10)
+
+        # Button to apply intensity level slicing
+        intensity_level_slicing_btn = CustomButton3(intensity_manipulation_frame, text="Intensity Level Slicing", command=self.intensity_manipulation.intensity_level_slicing)
+        intensity_level_slicing_btn.pack(pady=5, padx=10)
+
+        # Button to apply global histogram equalization
+        apply_histogram_equalization_btn = CustomButton3(intensity_manipulation_frame, text="Apply Histogram Equalization", command=self.intensity_manipulation.apply_histogram_equalization)
+        apply_histogram_equalization_btn.pack(pady=5, padx=10)
+
+        # Button to apply local histogram equalization (CLAHE)
+        apply_local_histogram_equalization_btn = CustomButton3(intensity_manipulation_frame, text="Apply Local Histogram Equalization", command=self.intensity_manipulation.apply_local_histogram_equalization)
+        apply_local_histogram_equalization_btn.pack(pady=5, padx=10)
+
+        # Button to apply tonal transformation
+        tonal_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Tonal Transformation", command=self.intensity_manipulation.tonal_transformation)
+        tonal_transformation_btn.pack(pady=5, padx=10)
+
+        # Button to apply color balancing
+        color_balancing_btn = CustomButton3(intensity_manipulation_frame, text="Color Balancing", command=self.intensity_manipulation.color_balancing)
+        color_balancing_btn.pack(pady=5, padx=10)
 
         # -----Add buttons to the Image Segmentation tab------
 
