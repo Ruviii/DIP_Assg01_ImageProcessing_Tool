@@ -16,7 +16,7 @@ class AdvancedUI:
         self.sidebar.add(tab2, text="Advanced")
 
         # Create a scrollable frame
-        s_frame = ctk.CTkScrollableFrame(tab2, width=200, height=200, fg_color=color_2)
+        s_frame = ctk.CTkScrollableFrame(tab2, width=200, height=400, fg_color=color_2)#increase height 200 to 400
         s_frame.pack(padx=(5,0), fill="both", expand=True)
 
         s_frame._scrollbar.configure(
@@ -80,6 +80,29 @@ class AdvancedUI:
         log_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Log Transformation", command=self.intensity_manipulation.log_transformation)
         log_transformation_btn.pack(pady=5, padx=10)
 
+
+        # -----Add buttons to the Image Segmentation tab------
+
+        # Button for Thresholding Segmentation
+        thresholding_btn = CustomButton5(image_segmentation_frame, text="Apply Thresholding", command=self.image_segmentation.thresholding)
+        thresholding_btn.pack(pady=(20,5), padx=10)
+
+        # Button for Edge Detection
+        edge_detection_btn = CustomButton5(image_segmentation_frame, text="Edge Detection", command=self.image_segmentation.edge_detection)
+        edge_detection_btn.pack(pady=5, padx=10)
+
+        # Button for Watershed Segmentation
+        watershed_btn = CustomButton5(image_segmentation_frame, text="Apply Watershed", command=self.image_segmentation.watershed)
+        watershed_btn.pack(pady=5, padx=10)
+
+        # Button for GrabCut Segmentation
+        grabcut_btn = CustomButton5(image_segmentation_frame, text="Apply GrabCut", command=self.image_segmentation.grabcut)
+        grabcut_btn.pack(pady=5, padx=10)
+
+        # Button for Region Growing Segmentation
+        region_growing_btn = CustomButton5(image_segmentation_frame, text="Region Growing", command=self.image_segmentation.region_growing)
+        region_growing_btn.pack(pady=(5,20), padx=10)
+
         # Button to apply power-law (gamma) transformation
         power_law_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Power-Law Transformation", command=self.intensity_manipulation.power_law_transformation)
         power_law_transformation_btn.pack(pady=5, padx=10)
@@ -112,3 +135,4 @@ class AdvancedUI:
 
         
         
+
