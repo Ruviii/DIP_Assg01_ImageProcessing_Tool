@@ -46,36 +46,35 @@ class AdvancedUI:
 
         # -----Add buttons to the Filters tab------
 
-        # Button to apply histogram equalization filter
-        histogram_equalization_btn = CustomButton4(filters_frame, text="Apply HistEqualization", command=self.filter.filter_histogram_equalization)
-        histogram_equalization_btn.pack(pady=(20,5), padx=10)
+        # Button to apply Sharpening filter
+        sharpen_btn = CustomButton4(filters_frame, text="Sharpen", command=self.filter.sharpen_image)
+        sharpen_btn.pack(pady=5, padx=10)
 
-        # Button to apply CLAHE filter
-        clahe_btn = CustomButton4(filters_frame, text="Apply CLAHE", command=self.filter.filter_clahe)
-        clahe_btn.pack(pady=5, padx=10)
+        # Button to apply Smoothing filter
+        smooth_btn = CustomButton4(filters_frame, text="Smooth", command=self.filter.smooth_image)
+        smooth_btn.pack(pady=5, padx=10)
 
-        # Button to apply Minimum filter
-        min_filter_btn = CustomButton4(filters_frame, text="Minimum Filter", command=self.filter.filter_minimum)
-        min_filter_btn.pack(pady=5, padx=10)
+        # Button to apply Edge Detection filter
+        edge_detection_btn = CustomButton4(filters_frame, text="Edge Detection", command=self.filter.edge_detection)
+        edge_detection_btn.pack(pady=5, padx=10)
 
-        # Button to apply Maximum filter
-        max_filter_btn = CustomButton4(filters_frame, text="Maximum Filter", command=self.filter.filter_maximum)
-        max_filter_btn.pack(pady=5, padx=10)
-
-        # Button to apply Median filter
-        median_filter_btn = CustomButton4(filters_frame, text="Median Filter", command=self.filter.filter_median)
-        median_filter_btn.pack(pady=5, padx=10)
+        # Button to apply Embossing filter
+        embossing_btn = CustomButton4(filters_frame, text="Emboss", command=self.filter.emboss_image)
+        embossing_btn.pack(pady=5, padx=10)
 
         # Button to apply Gaussian Blur filter
-        gaussian_blur_btn = CustomButton4(filters_frame, text="Gaussian Blur", command=self.filter.filter_gaussian_blur)
+        gaussian_blur_btn = CustomButton4(filters_frame, text="Gaussian Blur", command=self.filter.gaussian_blur)
         gaussian_blur_btn.pack(pady=5, padx=10)
 
-        # Button to apply Linear filter
-        linear_filter_btn = CustomButton4(filters_frame, text="Apply Linear Filter", command=self.filter.filter_linear)
-        linear_filter_btn.pack(pady=(5,20), padx=10)
+        # Button to apply CLAHE (Contrast Limited Adaptive Histogram Equalization)
+        bilateral_filter_btn = CustomButton4(filters_frame, text="Bilateral", command=self.filter.bilateral_filter)
+        bilateral_filter_btn.pack(pady=(5,20), padx=10)
 
         # -----Add buttons to the Intensity Manipulation tab------
 
 
 
         # -----Add buttons to the Image Segmentation tab------
+
+        
+        
