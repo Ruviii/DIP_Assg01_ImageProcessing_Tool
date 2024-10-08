@@ -11,6 +11,12 @@ class ImageSegmentation:
 
 
     #----------add your functions here----------#    
+    class ImageSegmentation:
+       def _init_(self, file_handler):
+        self.file_handler = file_handler
+
+
+    #----------add your functions here----------#    
     # Function to apply thresholding
     def thresholding(self):
         if self.file_handler.processed_img is not None:
@@ -79,30 +85,50 @@ class ImageSegmentation:
  # Function to apply Region Growing segmentation
     # Function to apply Region Growing segmentation
     def region_growing(self):
-        if self.file_handler.processed_img is not None:
-            self.file_handler.save_undo_state()
+       if self.file_handler.processed_img is not None:
+        self.file_handler.save_undo_state()
 
-            def region_grow(img, seed, threshold):
-                h, w = img.shape
-                segmented = np.zeros_like(img)
-                seed_stack = [seed]
-                while seed_stack:
-                    x, y = seed_stack.pop()
-                    if segmented[x, y] == 0 and img[x, y] < threshold:
-                        segmented[x, y] = 255
+        def region_grow(img, seed, threshold):
+            h, w = img.shape
+            segmented = np.zeros_like(img)  # Initialize the segmented image as black
+            seed_stack = [seed]
+            visited = np.zeros_like(img)  # To keep track of visited pixels
+            seed_value = img[seed]  # Get the intensity value at the seed point
+
+            while seed_stack:
+                x, y = seed_stack.pop()
+
+                # Check if the pixel is already visited to prevent reprocessing
+                if visited[x, y] == 0:
+                    visited[x, y] = 1  # Mark the pixel as visited
+
+                    # Check if the pixel intensity difference is within the threshold
+                    if abs(int(img[x, y]) - int(seed_value)) < threshold:
+                        segmented[x, y] = 255  # Set the pixel as part of the region (white)
+
+                        # Add neighboring pixels to the stack
                         if x > 0: seed_stack.append((x - 1, y))
                         if x < h - 1: seed_stack.append((x + 1, y))
                         if y > 0: seed_stack.append((x, y - 1))
                         if y < w - 1: seed_stack.append((x, y + 1))
-                return segmented
 
-            gray_image = cv2.cvtColor(self.file_handler.processed_img, cv2.COLOR_BGR2GRAY)
-            seed_point = (int(gray_image.shape[0] / 2), int(gray_image.shape[1] / 2))  # Using center as seed point
-            threshold = 100
-            region_grown = region_grow(gray_image, seed_point, threshold)
+            return segmented
 
-            self.file_handler.processed_img = cv2.cvtColor(region_grown, cv2.COLOR_GRAY2BGR)
-            self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
+        # Convert image to grayscale
+        gray_image = cv2.cvtColor(self.file_handler.processed_img, cv2.COLOR_BGR2GRAY)
+
+        # Set the seed point (center of the image)
+        seed_point = (int(gray_image.shape[0] / 2), int(gray_image.shape[1] / 2))
+
+        # Define a threshold for region growing
+        threshold = 30  # Adjust this value as needed
+
+        # Perform region growing
+        region_grown = region_grow(gray_image, seed_point, threshold)
+
+        # Convert the result back to BGR for displaying
+        self.file_handler.processed_img = cv2.cvtColor(region_grown, cv2.COLOR_GRAY2BGR)
+        self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
 
     def undo_action(self):
         self.file_handler.undo_action()
