@@ -5,6 +5,7 @@ import tkinter as tk
 from utils.file_handler import FileHandler
 from tkinter import simpledialog
 from tkinter.colorchooser import askcolor
+from tkinter import colorchooser
 
 class BasicProcessor:
     def __init__(self, file_handler):
@@ -12,6 +13,12 @@ class BasicProcessor:
         self.line_thickness = 1
         self.drawing = False
         self.ix, self.iy = -1, -1
+        self.color = (0, 200, 255)  
+
+    def choose_color(self):
+        color_code = colorchooser.askcolor(title="Choose color")
+        if color_code[0] is not None:
+            self.color = (int(color_code[0][2]), int(color_code[0][1]), int(color_code[0][0]))
 
     def rotate_image(self):
         if self.file_handler.processed_img is not None:
@@ -67,11 +74,11 @@ class BasicProcessor:
         elif event.type == tk.EventType.Motion:
             if self.drawing:
                 temp_img = self.file_handler.processed_img.copy()
-                cv2.line(temp_img, (self.ix, self.iy), (x, y), (0, 200, 255), thickness=self.line_thickness)
+                cv2.line(temp_img, (self.ix, self.iy), (x, y), self.color, thickness=self.line_thickness)
                 self.file_handler.display_image(temp_img, self.file_handler.img_canvas2)
         elif event.type == tk.EventType.ButtonRelease:
             self.drawing = False
-            cv2.line(self.file_handler.processed_img, (self.ix, self.iy), (x, y), (0, 200, 255), thickness=self.line_thickness)
+            cv2.line(self.file_handler.processed_img, (self.ix, self.iy), (x, y), self.color, thickness=self.line_thickness)
             self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
 
     def drawing_line(self):
@@ -89,12 +96,12 @@ class BasicProcessor:
             if self.drawing:
                 temp_img = self.file_handler.processed_img.copy()
                 radius = int(((x - self.ix) ** 2 + (y - self.iy) ** 2) ** 0.5)
-                cv2.circle(temp_img, (self.ix, self.iy), radius, (0, 200, 255), thickness=self.line_thickness)
+                cv2.circle(temp_img, (self.ix, self.iy), radius, self.color, thickness=self.line_thickness)
                 self.file_handler.display_image(temp_img, self.file_handler.img_canvas2)
         elif event.type == tk.EventType.ButtonRelease:
             self.drawing = False
             radius = int(((x - self.ix) ** 2 + (y - self.iy) ** 2) ** 0.5)
-            cv2.circle(self.file_handler.processed_img, (self.ix, self.iy), radius, (0, 200, 255), thickness=self.line_thickness)
+            cv2.circle(self.file_handler.processed_img, (self.ix, self.iy), radius, self.color, thickness=self.line_thickness)
             self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
 
     def drawing_circle(self):
@@ -111,11 +118,11 @@ class BasicProcessor:
         elif event.type == tk.EventType.Motion:
             if self.drawing:
                 temp_img = self.file_handler.processed_img.copy()
-                cv2.rectangle(temp_img, (self.ix, self.iy), (x, y), (0, 200, 255), thickness=self.line_thickness)
+                cv2.rectangle(temp_img, (self.ix, self.iy), (x, y),self.color, thickness=self.line_thickness)
                 self.file_handler.display_image(temp_img, self.file_handler.img_canvas2)
         elif event.type == tk.EventType.ButtonRelease:
             self.drawing = False
-            cv2.rectangle(self.file_handler.processed_img, (self.ix, self.iy), (x, y), (0, 200, 255), thickness=self.line_thickness)
+            cv2.rectangle(self.file_handler.processed_img, (self.ix, self.iy), (x, y),self.color, thickness=self.line_thickness)
             self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
 
     def drawing_rectangle(self):
@@ -133,12 +140,12 @@ class BasicProcessor:
             if self.drawing:
                 temp_img = self.file_handler.processed_img.copy()
                 points = np.array([[self.ix, self.iy], [x, y], [(self.ix + x) // 2, self.iy - (y - self.iy)]], np.int32)
-                cv2.polylines(temp_img, [points], isClosed=True, color=(0, 200, 255), thickness=self.line_thickness)
+                cv2.polylines(temp_img, [points], isClosed=True, color=self.color, thickness=self.line_thickness)
                 self.file_handler.display_image(temp_img, self.file_handler.img_canvas2)
         elif event.type == tk.EventType.ButtonRelease:
             self.drawing = False
             points = np.array([[self.ix, self.iy], [x, y], [(self.ix + x) // 2, self.iy - (y - self.iy)]], np.int32)
-            cv2.polylines(self.file_handler.processed_img, [points], isClosed=True, color=(0, 200, 255), thickness=self.line_thickness)
+            cv2.polylines(self.file_handler.processed_img, [points], isClosed=True, color=self.color, thickness=self.line_thickness)
             self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
 
     def drawing_triangle(self):
@@ -156,12 +163,12 @@ class BasicProcessor:
             if self.drawing:
                 temp_img = self.file_handler.processed_img.copy()
                 side_length = min(abs(x - self.ix), abs(y - self.iy))
-                cv2.rectangle(temp_img, (self.ix, self.iy), (self.ix + side_length, self.iy + side_length), (0, 200, 255), thickness=self.line_thickness)
+                cv2.rectangle(temp_img, (self.ix, self.iy), (self.ix + side_length, self.iy + side_length), self.color, thickness=self.line_thickness)
                 self.file_handler.display_image(temp_img, self.file_handler.img_canvas2)
         elif event.type == tk.EventType.ButtonRelease:
             self.drawing = False
             side_length = min(abs(x - self.ix), abs(y - self.iy))
-            cv2.rectangle(self.file_handler.processed_img, (self.ix, self.iy), (self.ix + side_length, self.iy + side_length), (0, 200, 255), thickness=self.line_thickness)
+            cv2.rectangle(self.file_handler.processed_img, (self.ix, self.iy), (self.ix + side_length, self.iy + side_length), self.color, thickness=self.line_thickness)
             self.file_handler.display_image(self.file_handler.processed_img, self.file_handler.img_canvas2)
 
     def drawing_square(self):
