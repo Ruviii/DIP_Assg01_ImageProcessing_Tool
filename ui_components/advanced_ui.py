@@ -12,11 +12,11 @@ class AdvancedUI:
         self.setup_advanced_ui()
 
     def setup_advanced_ui(self):
-        tab2 = tk.Frame(self.sidebar, bg=color_2, bd=0)
+        tab2 = ctk.CTkFrame(self.sidebar, fg_color=color_2)
         self.sidebar.add(tab2, text="Advanced")
 
         # Create a scrollable frame
-        s_frame = ctk.CTkScrollableFrame(tab2, width=200, height=400, fg_color=color_2)
+        s_frame = ctk.CTkScrollableFrame(tab2, width=200, height=200, fg_color=color_2)
         s_frame.pack(padx=(5,0), fill="both", expand=True)
 
         s_frame._scrollbar.configure(
@@ -24,15 +24,16 @@ class AdvancedUI:
             button_hover_color= color_3 
         )
 
+
         # Create frames for filters, intensity manipulation, and image segmentation 
         filters_frame = ctk.CTkFrame(s_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=color_5)
-        filters_frame.grid(row=1, column=0, padx=10, pady=10)
+        filters_frame.grid(row=1, column=0, padx=20, pady=15)
 
         intensity_manipulation_frame = ctk.CTkFrame(s_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=color_3)
-        intensity_manipulation_frame.grid(row=3, column=0, padx=10, pady=10)
+        intensity_manipulation_frame.grid(row=3, column=0, padx=20, pady=15)
 
         image_segmentation_frame = ctk.CTkFrame(s_frame, fg_color="transparent", corner_radius=20, border_width=3, border_color=color_7)
-        image_segmentation_frame.grid(row=5, column=0, padx=10, pady=10)
+        image_segmentation_frame.grid(row=5, column=0, padx=20, pady=15)
 
         # Add titles above each frame
         filters_label = tk.Label(s_frame, text="Filters", bg=color_2, fg=black, font=('Arial', 16, 'bold'))
@@ -81,15 +82,15 @@ class AdvancedUI:
         log_transformation_btn.pack(pady=10, padx=10)
 
         # Button to apply power-law (gamma) transformation
-        power_law_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Adjust Gamma", command=self.intensity_manipulation.power_law_transformation)
+        power_law_transformation_btn = CustomButton3(intensity_manipulation_frame, text="Adjust Gamma", command=lambda: self.intensity_manipulation.power_law_transformation(gamma=1.2, c=1))
         power_law_transformation_btn.pack(pady=10, padx=10)
 
         # Button to apply contrast stretching
-        contrast_stretching_btn = CustomButton3(intensity_manipulation_frame, text="Enhance Contrast", command=self.intensity_manipulation.contrast_stretching)
+        contrast_stretching_btn = CustomButton3(intensity_manipulation_frame, text="Enhance Contrast", command=lambda: self.intensity_manipulation.contrast_stretching(100, 150, 80, 170))
         contrast_stretching_btn.pack(pady=10, padx=10)
 
         # Button to apply intensity level slicing
-        intensity_level_slicing_btn = CustomButton3(intensity_manipulation_frame, text="Slice Levels", command=self.intensity_manipulation.intensity_level_slicing)
+        intensity_level_slicing_btn = CustomButton3(intensity_manipulation_frame, text="Slice Levels", command=lambda: self.intensity_manipulation.intensity_level_slicing(100,150))
         intensity_level_slicing_btn.pack(pady=10, padx=10)
 
         # Button to apply global histogram equalization
@@ -105,7 +106,7 @@ class AdvancedUI:
         tonal_transformation_btn.pack(pady=10, padx=10)
 
         # Button to apply color balancing
-        color_balancing_btn = CustomButton3(intensity_manipulation_frame, text="Balance Colors", command=self.intensity_manipulation.color_balancing)
+        color_balancing_btn = CustomButton3(intensity_manipulation_frame, text="Balance Colors", command=lambda: self.intensity_manipulation.color_balancing(red_balance=1.1, green_balance=1.0, blue_balance=0.9))
         color_balancing_btn.pack(pady=(10,25), padx=10)
 
 
