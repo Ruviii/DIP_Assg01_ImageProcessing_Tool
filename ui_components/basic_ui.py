@@ -41,7 +41,7 @@ class BasicUI:
         btn_frame2.pack(side=ctk.TOP,padx=20,pady=15)
         
         color_button = CustomButton3(btn_frame2, text="Choose Color", command=self.basic_processor.choose_color)
-        color_button.pack(padx=10, pady=(25, 0))
+        color_button.pack(padx=20, pady=(25, 0))
 
         slider_label = tk.Label(btn_frame2, text="Adjust Line Thicknes", bg=color_2, fg=black, font=('Arial', 11, 'bold'))
         slider_label.pack(pady=10, padx=20)

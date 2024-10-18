@@ -2,7 +2,6 @@ import cv2
 from tkinter import filedialog
 from PIL import Image, ImageTk
 
-
 class FileHandler:
     def __init__(self):
         self.original_img = None
@@ -41,12 +40,17 @@ class FileHandler:
     def save_image(self):
         file_path = filedialog.asksaveasfilename(defaultextension=".jpg")
         if file_path:
-            cv2.imwrite(file_path, self.processed_img)
+            if self.processed_img is not None:
+                img_rgb = cv2.cvtColor(self.processed_img, cv2.COLOR_RGB2BGR)
+                cv2.imwrite(file_path, img_rgb)
+                print(f"Image saved to {file_path}")
+            else:
+                print("No image to save.")
 
     def save_undo_state(self):
         if self.processed_img is not None:
             self.undo_stack.append(self.processed_img.copy())
-            self.redo_stack.clear()  # Clear redo stack when new action is performed
+            self.redo_stack.clear()
 
     def undo_action(self):
         if self.undo_stack:
